@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- use develop mode -->
+	<constant name="struts.devMode" value="true" />
+
+	<!-- use spring bean factory -->
+	<constant name="struts.objectFactory" value="spring" />
+
+	<!-- Package for Diary Accuracy -->
+	<package name="AccuracyPackage" namespace="/Accuracy"
+		extends="struts-default, json-default">
+		<action name="showAllAccuracies" class="AccuracyAction" method="showAllAccuracies">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="CPADB_Activity_Package" namespace="/CPADB_Activity"
+		extends="struts-default, json-default">
+		<action name="showAllMajorHeadings" class="CpadbActivityAction"
+			method="showAllMajorHeadings">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="showSelectSpecificActivities" class="CpadbActivityAction"
+			method="showSelectSpecificActivities">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="FCDB_Food_Package" namespace="/FCDB_Food"
+		extends="struts-default, json-default">
+		<action name="showAllFoodChapters" class="FcdbFoodAction"
+			method="showAllChapters">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="showSelectedFoodDescription" class="FcdbFoodAction"
+			method="showSelectedFoodDescription">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- Package for User login and logout -->
+	<package name="UserPackage" namespace="/User" extends="struts-default">
+		<action name="Login" class="UserAction" method="login">
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
+
+	<!-- Package for Subject operations. -->
+	<package name="SubjectPackage" namespace="/Subject"
+		extends="struts-default,json-default">
+		<action name="showUserSubjects" class="SubjectAction" method="showUserSubjects">
+			<result name="success" type="json">
+				<param name="excludeProperties">subjectSureName,subjectFamilyName,
+					subjectGender,subjectDOB,subjectHeight,subjectWeight,subjectEmail,
+					subjectPhone, subjectMobile, subjectSpeicial</param>
+			</result>
+		</action>
+		<action name="editUserSubject" class="SubjectAction" method="editUserSubject">
+		</action>
+	</package>
+
+	<!-- Package for FoodDiary operations. -->
+	<package name="FoodDiaryPackage" namespace="/FoodDiary"
+		extends="struts-default,json-default">
+		<action name="showFoodDiaries" class="FoodDiaryAction" method="showFoodDiaries">
+			<result name="success" type="json">
+			</result>
+		</action>
+		<action name="editFoodDiary" class="FoodDiaryAction" method="editFoodDiary">
+		</action>
+
+		<!-- For Meal CRUD operation. -->
+		<action name="showFDMeals" class="MealAction" method="showFDMeals">
+			<result name="success" type="json">
+			</result>
+		</action>
+		<action name="editFDMeal" class="MealAction" method="editFDMeal">
+		</action>
+
+		<!-- For Food CRUD operation. -->
+		<action name="showMealFood" class="FoodAction" method="showMealFood">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="editMealFood" class="FoodAction" method="editMealFood"></action>
+	</package>
+
+	<package name="ActivityDiaryPackage" namespace="/ActivityDiary"
+		extends="struts-default,json-default">
+		<action name="showActivityDiaries" class="ActivityDiaryAction"
+			method="showActivityDiaries">
+			<result name="success" type="json">
+			</result>
+		</action>
+		<action name="editActivityDiary" class="ActivityDiaryAction"
+			method="editActivityDiary"></action>
+
+		<!-- For ActivityEntry CRUD operation. -->
+		<action name="showADActivities" class="ActivityAction" method="showADActivities">
+			<result name="success" type="json">
+			</result>
+		</action>
+		<action name="editADActivity" class="ActivityAction" method="editADActivity"></action>
+	</package>
+
+</struts>    

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/DDB"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.connection.release_mode">after_transaction</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>domain/FoodIngredient.hbm.xml</value>
+				<value>domain/ActivityDiary.hbm.xml</value>
+				<value>domain/Activity.hbm.xml</value>
+				<value>domain/UserSubject.hbm.xml</value>
+				<value>domain/Grouping.hbm.xml</value>
+				<value>domain/Food.hbm.xml</value>
+				<value>domain/Researcher.hbm.xml</value>
+				<value>domain/UserRole.hbm.xml</value>
+				<value>domain/Accuracy.hbm.xml</value>
+				<value>domain/Role.hbm.xml</value>
+				<value>domain/Study.hbm.xml</value>
+				<value>domain/Action.hbm.xml</value>
+				<value>domain/Meal.hbm.xml</value>
+				<value>domain/FoodDiary.hbm.xml</value>
+				<value>domain/Permission.hbm.xml</value>
+				<value>domain/User.hbm.xml</value>
+				<value>domain/Subject.hbm.xml</value>
+				<value>domain/RolePermission.hbm.xml</value>
+				<value>domain/Group.hbm.xml</value>
+				<value>domain/Module.hbm.xml</value>
+				<value>domain/FcdbFood.hbm.xml</value>
+				<value>domain/CpadbActivity.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Beans for DAOs -->
+	<bean id="FoodIngredientDAO" class="dao.impl.FoodIngredientDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ActivityDiaryDAO" class="dao.impl.ActivityDiaryDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ActivityDAO" class="dao.impl.ActivityDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserSubjectDAO" class="dao.impl.UserSubjectDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="GroupingDAO" class="dao.impl.GroupingDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="FoodDAO" class="dao.impl.FoodDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ResearcherDAO" class="dao.impl.ResearcherDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserRoleDAO" class="dao.impl.UserRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="AccuracyDAO" class="dao.impl.AccuracyDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RoleDAO" class="dao.impl.RoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="StudyDAO" class="dao.impl.StudyDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ActionDAO" class="dao.impl.ActionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MealDAO" class="dao.impl.MealDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="FoodDiaryDAO" class="dao.impl.FoodDiaryDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="PermissionDAO" class="dao.impl.PermissionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserDAO" class="dao.impl.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="SubjectDAO" class="dao.impl.SubjectDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RolePermissionDAO" class="dao.impl.RolePermissionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="GroupDAO" class="dao.impl.GroupDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ModuleDAO" class="dao.impl.ModuleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="FcdbFoodDAO" class="dao.impl.FcdbFoodDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="CpadbActivityDAO" class="dao.impl.CpadbActivityDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- Beans for Actions -->
+	<bean id="AccuracyAction" class="action.AccuracyAction">
+		<property name="accuracyService">
+			<ref bean="AccuracyService" />
+		</property>
+	</bean>
+	<bean id="CpadbActivityAction" class="action.CpadbActivityAction">
+		<property name="cpadbActivityService">
+			<ref bean="CpadbActivityService"/>
+		</property>
+	</bean>
+	<bean id="FcdbFoodAction" class="action.FcdbFoodAction">
+		<property name="fcdbFoodService">
+			<ref bean="FcdbFoodService"/>
+		</property>
+	</bean>
+	<bean id="UserAction" class="action.UserAction">
+		<property name="userService">
+			<ref bean="UserService" />
+		</property>
+	</bean>
+	<bean id="SubjectAction" class="action.SubjectAction">
+		<property name="subjectService">
+			<ref bean="SubjectService" />
+		</property>
+	</bean>
+	<bean id="FoodDiaryAction" class="action.FoodDiaryAction">
+		<property name="foodDiaryService">
+			<ref bean="FoodDiaryService" />
+		</property>
+	</bean>
+	<bean id="MealAction" class="action.MealAction">
+		<property name="mealService">
+			<ref bean="MealService" />
+		</property>
+	</bean>
+	<bean id="FoodAction" class="action.FoodAction">
+		<property name="foodService">
+			<ref bean="FoodService" />
+		</property>
+	</bean>
+	<bean id="FoodIngredientAction" class="action.FoodIngredientAction">
+		<property name="foodIngredientService">
+			<ref bean="FoodIngredientService" />
+		</property>
+	</bean>
+	<bean id="ActivityDiaryAction" class="action.ActivityDiaryAction">
+		<property name="activityDiaryService">
+			<ref bean="ActivityDiaryService" />
+		</property>
+	</bean>
+	<bean id="ActivityAction" class="action.ActivityAction">
+		<property name="activityService">
+			<ref bean="ActivityService" />
+		</property>
+	</bean>
+
+
+	<!-- Beans for Services -->
+	<bean id="AccuracyService" class="service.impl.AccuracyService">
+		<property name="accuracyDAO">
+			<ref bean="AccuracyDAO" />
+		</property>
+	</bean>
+	<bean id="CpadbActivityService" class="service.impl.CpadbActivityService">
+		<property name="cpadbActivityDAO">
+			<ref bean="CpadbActivityDAO"/>
+		</property>
+	</bean>
+	<bean id="FcdbFoodService" class="service.impl.FcdbFoodService">
+		<property name="fcdbFoodDAO">
+			<ref bean="FcdbFoodDAO"/>
+		</property>
+	</bean>
+	<bean id="UserService" class="service.impl.UserService">
+		<property name="userDAO">
+			<ref bean="UserDAO" />
+		</property>
+	</bean>
+	<bean id="SubjectService" class="service.impl.SubjectService">
+		<property name="subjectDAO">
+			<ref bean="SubjectDAO" />
+		</property>
+		<property name="usDAO">
+			<ref bean="UserSubjectDAO" />
+		</property>
+	</bean>
+	<bean id="FoodDiaryService" class="service.impl.FoodDiaryService">
+		<property name="foodDiaryDAO">
+			<ref bean="FoodDiaryDAO" />
+		</property>
+	</bean>
+	<bean id="MealService" class="service.impl.MealService">
+		<property name="mealDAO">
+			<ref bean="MealDAO" />
+		</property>
+	</bean>
+	<bean id="FoodService" class="service.impl.FoodService">
+		<property name="foodDAO">
+			<ref bean="FoodDAO" />
+		</property>
+	</bean>
+	<bean id="FoodIngredientService" class="service.impl.FoodIngredientService">
+
+	</bean>
+	<bean id="ActivityDiaryService" class="service.impl.ActivityDiaryService">
+		<property name="activityDiaryDAO">
+			<ref bean="ActivityDiaryDAO" />
+		</property>
+	</bean>
+	<bean id="ActivityService" class="service.impl.ActivityService">
+		<property name="activityDAO">
+			<ref bean="ActivityDAO" />
+		</property>
+	</bean>
+</beans>
