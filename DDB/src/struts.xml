@@ -6,6 +6,8 @@
 
 	<!-- use spring bean factory -->
 	<constant name="struts.objectFactory" value="spring" />
+	
+	<constant name="struts.action.extension" value="action" />
 
 	<!-- Package for Diary Accuracy -->
 	<package name="AccuracyPackage" namespace="/Accuracy"

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd" >
 
+	<import resource="classpath:cxf.xml" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver">
@@ -173,12 +175,12 @@
 	</bean>
 	<bean id="CpadbActivityAction" class="action.CpadbActivityAction">
 		<property name="cpadbActivityService">
-			<ref bean="CpadbActivityService"/>
+			<ref bean="CpadbActivityService" />
 		</property>
 	</bean>
 	<bean id="FcdbFoodAction" class="action.FcdbFoodAction">
 		<property name="fcdbFoodService">
-			<ref bean="FcdbFoodService"/>
+			<ref bean="FcdbFoodService" />
 		</property>
 	</bean>
 	<bean id="UserAction" class="action.UserAction">
@@ -231,12 +233,12 @@
 	</bean>
 	<bean id="CpadbActivityService" class="service.impl.CpadbActivityService">
 		<property name="cpadbActivityDAO">
-			<ref bean="CpadbActivityDAO"/>
+			<ref bean="CpadbActivityDAO" />
 		</property>
 	</bean>
 	<bean id="FcdbFoodService" class="service.impl.FcdbFoodService">
 		<property name="fcdbFoodDAO">
-			<ref bean="FcdbFoodDAO"/>
+			<ref bean="FcdbFoodDAO" />
 		</property>
 	</bean>
 	<bean id="UserService" class="service.impl.UserService">
@@ -280,4 +282,7 @@
 			<ref bean="ActivityDAO" />
 		</property>
 	</bean>
+
+
+
 </beans>
